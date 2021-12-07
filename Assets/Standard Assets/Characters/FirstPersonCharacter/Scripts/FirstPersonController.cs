@@ -81,6 +81,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+
+
+
+
+
         }
 
 
@@ -131,7 +137,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
-        }
+
+
+            }
+
+
+
+
+        
+
+
+
 
 
         private void PlayJumpSound()
@@ -175,6 +191,56 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FootstepSounds[n] = m_FootstepSounds[0];
             m_FootstepSounds[0] = m_AudioSource.clip;
         }
+
+        //mysound script
+
+        public AudioClip slurpsound;
+        public AudioSource audioS;
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Slurp"))
+            {
+                audioS.PlayOneShot(slurpsound);
+            }
+
+            if (other.gameObject.CompareTag("WeaponPickUp"))
+            {
+
+                other.gameObject.SetActive(false);
+
+
+            }
+
+
+
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Slurp"))
+            {
+               AudioSource audio = GetComponent<AudioSource>();
+           audio.Stop();
+            }
+
+       
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         private void UpdateCameraPosition(float speed)
