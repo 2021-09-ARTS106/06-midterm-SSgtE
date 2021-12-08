@@ -41,6 +41,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        
+
 
         // Use this for initialization
         private void Start()
@@ -194,11 +196,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         //mysound script
 
-        public AudioClip slurpsound;
+        public AudioClip slurpsound, jumpscare;
         public AudioSource audioS;
+        private bool playScare = true;
+
 
         private void OnTriggerEnter(Collider other)
         {
+       
+
             if (other.CompareTag("Slurp"))
             {
                 audioS.PlayOneShot(slurpsound);
@@ -208,9 +214,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
 
                 other.gameObject.SetActive(false);
+            }
+
+            
+            if (other.CompareTag("JumpScare"))
+            {
+                if (playScare)
+                {
+                    audioS.PlayOneShot(jumpscare);
+                    playScare = false;
+                }
+                
+              
 
 
             }
+
 
 
 
