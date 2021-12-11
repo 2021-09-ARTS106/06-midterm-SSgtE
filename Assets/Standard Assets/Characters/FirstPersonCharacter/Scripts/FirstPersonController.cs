@@ -196,7 +196,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         //mysound script
 
-        public AudioClip slurpsound, jumpscare;
+        public AudioClip slurpsound, jumpscare, cutScene;
         public AudioSource audioS;
         private bool playScare = true;
 
@@ -230,6 +230,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             }
 
+
+
+
+
+            if (other.CompareTag("CutScene"))
+            {
+                if (playScare)
+                {
+                    audioS.PlayOneShot(cutScene);
+                    playScare = false;
+                }
+
+
+
+
+            }
 
 
 

@@ -11,6 +11,7 @@ TagManager:
   - WeaponPickUp
   - CuntSmell
   - JumpScare
+  - CutScene
   layers:
   - Default
   - TransparentFX
